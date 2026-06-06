@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm mx-auto" style="max-width: 600px;">
+    <div class="card-header bg-danger text-white">
+        <h4 class="mb-0">Check-out e Extrato</h4>
+    </div>
+    <div class="card-body">
+        {% if not extrato %}
+        <form method="POST">
+            <div class="mb-4">
+                <label class="form-label fw-bold">Selecione a Reserva</label>
+                <select name="codigo" class="form-select" required>
+                    <option value="" disabled selected>Escolha um hóspede ativo...</option>
+                    {% for cod, reserva in reservas.items() %}
+                        <option value="{{ cod }}">{{ cod }} - {{ reserva.hospede }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="d-flex justify-content-between">
+                <a href="/" class="btn btn-secondary">Voltar</a>
+                <button type="submit" class="btn btn-danger">Fechar Conta</button>
+            </div>
+        </form>
+        {% else %}
+        <div class="alert alert-success">
+            <h5 class="fw-bold mb-3">Conta Encerrada com Sucesso!</h5>
+            <pre class="bg-white p-3 border rounded"><code>{{ extrato }}</code></pre>
+        </div>
+        <div class="text-center mt-3">
+            <a href="/" class="btn btn-primary">Voltar ao Menu</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,13 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6 text-center mt-5">
-        <h2 class="mb-4 text-primary">Sistema de Gestão</h2>
-        <div class="d-grid gap-3">
-            <a href="/checkin" class="btn btn-outline-success btn-lg">🛎️ Novo Check-in</a>
-            <a href="/consumo" class="btn btn-outline-warning btn-lg">🛒 Lançar Consumo</a>
-            <a href="/checkout" class="btn btn-outline-danger btn-lg">🧾 Realizar Check-out</a>
-        </div>
+<div class="max-w-5xl mx-auto">
+    <div class="mb-8">
+        <h3 class="text-2xl font-bold text-slate-800">Bem-vindo(a) ao seu turno</h3>
+        <p class="text-slate-500">O que você deseja fazer agora?</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card Check-in -->
+        <a href="/checkin" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:border-emerald-200 transition-all group">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-door-open text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-700 mb-2">Novo Check-in</h4>
+            <p class="text-sm text-slate-500">Registrar chegada, selecionar quarto e serviços antecipados.</p>
+        </a>
+
+        <!-- Card Consumo -->
+        <a href="/consumo" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:border-amber-200 transition-all group">
+            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-basket-shopping text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-700 mb-2">Lançar Consumo</h4>
+            <p class="text-sm text-slate-500">Adicionar itens extras à ficha de um hóspede ativo.</p>
+        </a>
+
+        <!-- Card Check-out -->
+        <a href="/checkout" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:border-rose-200 transition-all group">
+            <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-receipt text-xl"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-700 mb-2">Realizar Check-out</h4>
+            <p class="text-sm text-slate-500">Encerrar a conta, gerar o extrato final e liberar o quarto.</p>
+        </a>
     </div>
 </div>
 {% endblock %}

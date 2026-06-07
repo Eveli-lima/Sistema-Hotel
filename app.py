@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from negocio.modelos import QuartoStandard, QuartoVIP, QuartoPresidencial, Reserva, Spa, Lavanderia, Frigobar
+from negocio.modelos import QuartoStandard, QuartoVIP, QuartoPresidencial, Reserva, Spa, Lavanderia, Frigobar, CamaExtra, TaxaPet, CafeDaManha
 from negocio.gerenciador import GerenciadorDeReservas, NotificadorEmail
 from dados.repositorio import BancoEmMemoria, BancoPersistente
 from datetime import datetime
@@ -55,6 +55,9 @@ def checkin():
         servicos = request.form.getlist('servicos')
         if 'spa' in servicos: reserva.adicionar_servico(Spa())
         if 'lavanderia' in servicos: reserva.adicionar_servico(Lavanderia())
+        if 'cama_extra' in servicos: reserva.adicionar_servico(CamaExtra())
+        if 'taxa_pet' in servicos: reserva.adicionar_servico(TaxaPet())
+        if 'cafe_manha' in servicos: reserva.adicionar_servico(CafeDaManha())
         
         codigo = gerenciador.realizar_checkin(reserva)
         

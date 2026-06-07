@@ -40,6 +40,15 @@ class Spa(ServicoBase):
 class Lavanderia(ServicoBase):
     def calcular_servico(self) -> float: return 80.00
 
+class CamaExtra(ServicoBase):
+    def calcular_servico(self) -> float: return 80.00
+
+class TaxaPet(ServicoBase):
+    def calcular_servico(self) -> float: return 120.00
+
+class CafeDaManha(ServicoBase):
+    def calcular_servico(self) -> float: return 45.00
+
 # --- ENTIDADE PRINCIPAL ---
 class Reserva:
     def __init__(self, hospede: str, email: str, telefone: str, 

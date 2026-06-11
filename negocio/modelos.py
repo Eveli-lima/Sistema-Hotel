@@ -57,13 +57,11 @@ class Reserva:
         self.hospede = hospede
         self.email = email
         self.telefone = telefone
-        # Novos campos detalhados:
         self.rua = rua
         self.numero = numero
         self.bairro = bairro
         self.cidade = cidade
         self.cep = cep
-        
         self.quarto = quarto
         self.data_entrada = data_entrada
         self.data_saida = data_saida

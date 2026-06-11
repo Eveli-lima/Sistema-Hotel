@@ -105,6 +105,24 @@ def checkout():
     reservas_ativas = gerenciador.listar_reservas_ativas()
     return render_template('checkout.html', extrato=extrato, reservas=reservas_ativas)
 
+@app.route('/remover_consumo', methods=['POST'])
+def remover_consumo():
+    codigo = request.form.get('codigo').upper()
+    index = int(request.form.get('index'))
+    
+    # Busca a reserva no repositório persistente ou em memória
+    reserva = gerenciador.repositorio.buscar(codigo)
+    
+    if reserva and 0 <= index < len(reserva.servicos):
+        # Remove o serviço pela posição dele na lista
+        reserva.servicos.pop(index)
+        
+        # O repositório salva o estado atualizado da reserva
+        gerenciador.repositorio.salvar(codigo, reserva)
+        return 'OK', 200
+        
+    return 'Erro', 400
+
 if __name__ == '__main__':
     app.run(debug=True)
 
